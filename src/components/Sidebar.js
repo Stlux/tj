@@ -72,7 +72,7 @@ const NAV = [
   },
 ];
 
-function Sidebar({ isOpen, activePage, onNavigate }) {
+function Sidebar({ isOpen, activePage, onNavigate, user }) {
   const [expanded, setExpanded] = useState({
     reports: true,
     finances: true,
@@ -87,10 +87,10 @@ function Sidebar({ isOpen, activePage, onNavigate }) {
     <aside className={`sidebar ${isOpen ? 'sidebar--open' : 'sidebar--closed'}`}>
       {/* User info */}
       <div className="sidebar__user">
-        <div className="sidebar__avatar">K</div>
+        <div className="sidebar__avatar">{user?.name?.[0]?.toUpperCase() || 'U'}</div>
         <div className="sidebar__user-info">
-          <div className="sidebar__user-name">Hi, KirillLikholetov</div>
-          <div className="sidebar__user-email">beaxheam77@gmail.com</div>
+          <div className="sidebar__user-name">Hi, {user?.name || 'User'}</div>
+          <div className="sidebar__user-email">{user?.email || ''}</div>
         </div>
       </div>
       <div className="sidebar__divider" />

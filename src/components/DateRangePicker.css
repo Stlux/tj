@@ -1,0 +1,247 @@
+/* ── Wrapper ── */
+.drp {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ── Trigger button ── */
+.drp__trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border-2);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.drp__trigger:hover,
+.drp__trigger--open {
+  border-color: var(--accent-blue);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.drp__trigger-icon {
+  display: flex;
+  align-items: center;
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.drp__trigger-label {
+  flex: 1;
+}
+
+.drp__trigger-chevron {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Dropdown panel ── */
+.drp__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 400;
+  background: var(--color-card);
+  border: 1px solid var(--color-border-2);
+  border-radius: 14px;
+  min-width: 500px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  animation: drp-fade 0.15s ease;
+}
+
+@keyframes drp-fade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Body: two columns ── */
+.drp__body {
+  display: flex;
+  padding: 16px;
+  gap: 0;
+}
+
+/* ── Presets column ── */
+.drp__presets {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 185px;
+  flex-shrink: 0;
+}
+
+.drp__col-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2px 10px 8px;
+}
+
+.drp__preset {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-family: inherit;
+  border-radius: 8px;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  width: 100%;
+  position: relative;
+}
+
+.drp__preset:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.drp__preset--active {
+  background: rgba(59, 130, 246, 0.12) !important;
+  color: var(--accent-blue) !important;
+  font-weight: 600;
+}
+
+.drp__preset-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+/* ── Vertical divider ── */
+.drp__vdivider {
+  width: 1px;
+  background: var(--color-border);
+  margin: 0 16px;
+  align-self: stretch;
+}
+
+/* ── Date range column ── */
+.drp__range {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drp__inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.drp__input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drp__input-group label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.drp__input-group input[type="date"] {
+  width: 100%;
+  padding: 9px 10px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color-scheme: dark;
+}
+
+.drp__input-group input[type="date"]:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.drp__input-arrow {
+  color: var(--text-muted);
+  padding-bottom: 10px;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* Selected range preview pill */
+.drp__preview {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 5px 12px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.01em;
+}
+
+/* ── Actions footer ── */
+.drp__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .drp__dropdown {
+    min-width: calc(100vw - 32px);
+    right: -8px;
+    left: -8px;
+    width: auto;
+  }
+
+  .drp__body {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .drp__vdivider {
+    width: 100%;
+    height: 1px;
+    margin: 10px 0;
+  }
+
+  .drp__inputs {
+    flex-direction: column;
+  }
+
+  .drp__input-arrow {
+    display: none;
+  }
+}

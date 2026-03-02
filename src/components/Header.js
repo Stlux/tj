@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 
-function Header({ onToggleSidebar, title }) {
+function Header({ onToggleSidebar, title, onLogout }) {
   const [dateTime, setDateTime] = useState('');
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function Header({ onToggleSidebar, title }) {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </button>
-        <button className="header__icon-btn" aria-label="Logout">
+        <button className="header__icon-btn" aria-label="Logout" onClick={onLogout}>
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />

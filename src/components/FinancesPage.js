@@ -1,61 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './FinancesPage.css';
-
-const STATS = [
-  { label: 'Расход ФБ',   value: '13 344.68$' },
-  { label: 'Расходники',  value: '70$' },
-  { label: 'Доход',       value: '19 293.1$' },
-  { label: 'Профит',      value: '5 878.42$' },
-  { label: 'ROI',         value: '43.82%' },
-  { label: 'с 24.02.2026', value: 'по 02.03.2026', isDate: true },
-];
-
-const TABLE_ROWS = [
-  {
-    id: 26,
-    actions: [
-      { label: 'Расходы', color: 'blue' },
-      { label: 'Профит',  color: 'purple' },
-    ],
-    name:       'KirillLikholetov',
-    расходники: '70$',
-    расходы:    '13 344.68$',
-    доходы:     '19 293.1$',
-    профит:     '5 878.42$',
-    roi:        '43.82%',
-  },
-];
+import DateRangePicker from './DateRangePicker';
+import {
+  getPresetRange,
+  getAccountStats,
+  calcStats,
+  getRecordsByRange,
+  fmtMoney,
+  fmtPct,
+  fmtDate,
+} from '../data/dataService';
 
 function FinancesPage() {
-  const [period] = useState('Последние 7 дней');
+  // ── Date range state ──────────────────────────────────────────
+  const [range, setRange] = useState(() => ({
+    ...getPresetRange('7days'),
+    label: 'Последние 7 дней',
+  }));
+
+  const handleApply = (r) => setRange(r);
+  const handleReset = () =>
+    setRange({ ...getPresetRange('7days'), label: 'Последние 7 дней' });
+
+  // ── Computed data ─────────────────────────────────────────────
+  const records      = useMemo(() => getRecordsByRange(range.from, range.to), [range]);
+  const stats        = useMemo(() => calcStats(records), [records]);
+  const accountStats = useMemo(() => getAccountStats(range.from, range.to), [range]);
+
+  // ── Stat cards definition ─────────────────────────────────────
+  const CARDS = [
+    { label: 'Расход ФБ',  value: fmtMoney(stats.fbSpend) },
+    { label: 'Расходники', value: fmtMoney(stats.consumables) },
+    { label: 'Доход',      value: fmtMoney(stats.revenue) },
+    {
+      label: 'Профит',
+      value: fmtMoney(stats.profit),
+      highlight: stats.profit >= 0 ? 'green' : 'red',
+    },
+    { label: 'ROI', value: fmtPct(stats.roi), highlight: stats.roi >= 0 ? 'green' : 'red' },
+    {
+      label: `с ${fmtDate(range.from)}`,
+      value: `по ${fmtDate(range.to)}`,
+      isDate: true,
+    },
+  ];
 
   return (
     <div className="fp">
-      {/* ── Header ── */}
+      {/* ── Page header ── */}
       <div className="fp__header">
         <h2 className="fp__title">Финансы</h2>
-        <div className="fp__controls">
-          <span className="fp__period">{period}</span>
-          <button className="btn btn--danger">Сбросить</button>
-          <button className="btn btn--primary">Применить</button>
-        </div>
+        <DateRangePicker value={range} onApply={handleApply} onReset={handleReset} />
       </div>
 
-      {/* ── Stats ── */}
+      {/* ── Stat cards ── */}
       <div className="fp__stats">
-        {STATS.map((s, i) => (
-          <div key={i} className="stat-card">
-            <div className="stat-card__label">{s.label}</div>
-            <div className="stat-card__value">{s.value}</div>
+        {CARDS.map((c, i) => (
+          <div key={i} className={`stat-card ${c.isDate ? 'stat-card--date' : ''}`}>
+            <div className="stat-card__label">{c.label}</div>
+            <div className={`stat-card__value ${c.highlight ? `stat-card__value--${c.highlight}` : ''}`}>
+              {c.value}
+            </div>
           </div>
         ))}
       </div>
 
-      {/* ── Table ── */}
+      {/* ── Detail table ── */}
       <div className="fp__table-card">
         <div className="fp__table-head">
           <span className="fp__table-title">Детальные данные</span>
-          <button className="fp__add-btn" aria-label="Добавить">+</button>
+          <button className="fp__add-btn" aria-label="Добавить запись">+</button>
         </div>
 
         <div className="fp__table-scroll">
@@ -73,29 +87,45 @@ function FinancesPage() {
               </tr>
             </thead>
             <tbody>
-              {TABLE_ROWS.map((row) => (
-                <tr key={row.id}>
-                  <td>{row.id}</td>
-                  <td>
-                    <div className="fp__badges">
-                      {row.actions.map((a) => (
-                        <span key={a.label} className={`fp__badge fp__badge--${a.color}`}>
-                          {a.label}
-                        </span>
-                      ))}
-                    </div>
+              {accountStats.length === 0 ? (
+                <tr>
+                  <td colSpan={8} className="fp__empty">
+                    Нет данных за выбранный период
                   </td>
-                  <td>{row.name}</td>
-                  <td>{row.расходники}</td>
-                  <td>{row.расходы}</td>
-                  <td>{row.доходы}</td>
-                  <td>{row.профит}</td>
-                  <td>{row.roi}</td>
                 </tr>
-              ))}
+              ) : (
+                accountStats.map((row) => (
+                  <tr key={row.id}>
+                    <td>{row.rowNum}</td>
+                    <td>
+                      <div className="fp__badges">
+                        <span className="fp__badge fp__badge--blue">Расходы</span>
+                        <span className="fp__badge fp__badge--purple">Профит</span>
+                      </div>
+                    </td>
+                    <td>{row.name}</td>
+                    <td>{fmtMoney(row.consumables)}</td>
+                    <td>{fmtMoney(row.fbSpend)}</td>
+                    <td>{fmtMoney(row.revenue)}</td>
+                    <td className={row.profit >= 0 ? 'fp__positive' : 'fp__negative'}>
+                      {fmtMoney(row.profit)}
+                    </td>
+                    <td className={row.roi >= 0 ? 'fp__positive' : 'fp__negative'}>
+                      {fmtPct(row.roi)}
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* ── Formula reference ── */}
+      <div className="fp__formula-note">
+        <span>Профит = Доход − Расход&nbsp;ФБ − Расходники</span>
+        <span className="fp__formula-sep">·</span>
+        <span>ROI = Профит / (Расход&nbsp;ФБ + Расходники) × 100%</span>
       </div>
     </div>
   );
