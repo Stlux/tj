@@ -1,0 +1,119 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--color-sidebar);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  z-index: 200;
+}
+
+/* Left zone — same width as sidebar on desktop */
+.header__sidebar-zone {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px 0 20px;
+  height: 100%;
+  border-right: 1px solid var(--color-border);
+}
+
+.header__logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.header__burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.header__burger:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+}
+
+/* Page title */
+.header__title {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.header__title span {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Right section */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.header__datetime {
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+.header__icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header__icon-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .header__sidebar-zone {
+    width: auto;
+    border-right: none;
+    padding: 0 8px 0 14px;
+    gap: 4px;
+    justify-content: flex-start;
+  }
+
+  .header__datetime {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__title {
+    display: none;
+  }
+}
