@@ -12,6 +12,7 @@
 
   "records": [
     { "id": "rec_013", "accountId": "acc_1", "date": "2026-03-01", "fbSpend": 701.53, "consumables": 90.00, "revenue": 584.2 },
-    { "id": "rec_014", "accountId": "acc_1", "date": "2026-03-02", "fbSpend":  0, "consumables": 0.00, "revenue": 720.24 }
+    { "id": "rec_014", "accountId": "acc_1", "date": "2026-03-02", "fbSpend":  411.33, "consumables": 0.00, "revenue": 720.24 },
+    { "id": "rec_015", "accountId": "acc_1", "date": "2026-03-03", "fbSpend":  0, "consumables": 0.00, "revenue": 611.23 }
   ]
 }
