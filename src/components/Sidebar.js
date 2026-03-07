@@ -45,12 +45,22 @@ const ChevronIcon = () => (
 );
 
 /* ── Nav config ── */
+const CHILD_PAGE_MAP = {
+  'Профит':             'reports',
+  'Конверсии':          'conversions',
+  'Расходы':            'expenses',
+  'ФБ Аккаунты':        'fb-accounts',
+  'Спенд модель':       'spend-model',
+  'Мои заказы':         'my-orders',
+  'Заказ расходников':  'order-supplies',
+};
+
 const NAV = [
   {
     id: 'reports',
     label: 'Отчёты',
     icon: <BarChartIcon />,
-    children: ['Профит', 'uEPC', 'Креативы', 'Калы', 'Спенд Модель'],
+    children: ['Профит', 'Конверсии'],
   },
   {
     id: 'finances',
@@ -63,12 +73,6 @@ const NAV = [
     label: 'Магазин',
     icon: <ShopIcon />,
     children: ['Мои заказы', 'Заказ расходников'],
-  },
-  {
-    id: 'education',
-    label: 'Обучение',
-    icon: <BookIcon />,
-    children: ['База знаний'],
   },
 ];
 
@@ -98,7 +102,8 @@ function Sidebar({ isOpen, activePage, onNavigate, user }) {
       {/* Navigation */}
       <nav className="sidebar__nav">
         {NAV.map((item) => {
-          const active = activePage === item.id;
+          const childPages = item.children.map((ch) => CHILD_PAGE_MAP[ch] || item.id);
+          const active = activePage === item.id || childPages.includes(activePage);
           const open = expanded[item.id];
           return (
             <div
@@ -118,12 +123,20 @@ function Sidebar({ isOpen, activePage, onNavigate, user }) {
 
               {open && (
                 <ul className="sidebar__submenu">
-                  {item.children.map((child) => (
-                    <li key={child} className="sidebar__submenu-item">
-                      <span className="sidebar__submenu-dot" />
-                      <span>{child}</span>
-                    </li>
-                  ))}
+                  {item.children.map((child) => {
+                    const childPage = CHILD_PAGE_MAP[child] || item.id;
+                    const childActive = activePage === childPage;
+                    return (
+                      <li
+                        key={child}
+                        className={`sidebar__submenu-item ${childActive ? 'sidebar__submenu-item--active' : ''}`}
+                        onClick={() => onNavigate(childPage)}
+                      >
+                        <span className="sidebar__submenu-dot" />
+                        <span>{child}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </div>

@@ -3,9 +3,9 @@ import './FinancesPage.css';
 import DateRangePicker from './DateRangePicker';
 import {
   getPresetRange,
+  getProfitStats,
   getAccountStats,
-  calcStats,
-  getRecordsByRange,
+  getOrdersTotal,
   fmtMoney,
   fmtPct,
   fmtDate,
@@ -23,21 +23,24 @@ function FinancesPage() {
     setRange({ ...getPresetRange('7days'), label: 'Последние 7 дней' });
 
   // ── Computed data ─────────────────────────────────────────────
-  const records      = useMemo(() => getRecordsByRange(range.from, range.to), [range]);
-  const stats        = useMemo(() => calcStats(records), [records]);
+  const stats        = useMemo(() => getProfitStats(range.from, range.to), [range]);
   const accountStats = useMemo(() => getAccountStats(range.from, range.to), [range]);
+  const ordersTotal  = useMemo(() => getOrdersTotal(range.from, range.to), [range]);
 
-  // ── Stat cards definition ─────────────────────────────────────
   const CARDS = [
-    { label: 'Расход ФБ',  value: fmtMoney(stats.fbSpend) },
-    { label: 'Расходники', value: fmtMoney(stats.consumables) },
-    { label: 'Доход',      value: fmtMoney(stats.revenue) },
+    { label: 'Конверсии (продажи)', value: String(stats.salesCount) },
+    { label: 'Доход',               value: fmtMoney(stats.revenue) },
+    { label: 'Расходы',             value: fmtMoney(stats.expenses) },
     {
       label: 'Профит',
       value: fmtMoney(stats.profit),
       highlight: stats.profit >= 0 ? 'green' : 'red',
     },
-    { label: 'ROI', value: fmtPct(stats.roi), highlight: stats.roi >= 0 ? 'green' : 'red' },
+    {
+      label: 'ROI',
+      value: fmtPct(stats.roi),
+      highlight: stats.roi >= 0 ? 'green' : 'red',
+    },
     {
       label: `с ${fmtDate(range.from)}`,
       value: `по ${fmtDate(range.to)}`,
@@ -58,7 +61,11 @@ function FinancesPage() {
         {CARDS.map((c, i) => (
           <div key={i} className={`stat-card ${c.isDate ? 'stat-card--date' : ''}`}>
             <div className="stat-card__label">{c.label}</div>
-            <div className={`stat-card__value ${c.highlight ? `stat-card__value--${c.highlight}` : ''}`}>
+            <div
+              className={`stat-card__value ${
+                c.highlight ? `stat-card__value--${c.highlight}` : ''
+              }`}
+            >
               {c.value}
             </div>
           </div>
@@ -104,7 +111,7 @@ function FinancesPage() {
                       </div>
                     </td>
                     <td>{row.name}</td>
-                    <td>{fmtMoney(row.consumables)}</td>
+                    <td>{fmtMoney(ordersTotal)}</td>
                     <td>{fmtMoney(row.fbSpend)}</td>
                     <td>{fmtMoney(row.revenue)}</td>
                     <td className={row.profit >= 0 ? 'fp__positive' : 'fp__negative'}>
@@ -123,9 +130,9 @@ function FinancesPage() {
 
       {/* ── Formula reference ── */}
       <div className="fp__formula-note">
-        <span>Профит = Доход − Расход&nbsp;ФБ − Расходники</span>
+        <span>Профит = Доход (конверсии «Продажа») − Расходы</span>
         <span className="fp__formula-sep">·</span>
-        <span>ROI = Профит / (Расход&nbsp;ФБ + Расходники) × 100%</span>
+        <span>ROI = Профит / Расходы × 100%</span>
       </div>
     </div>
   );

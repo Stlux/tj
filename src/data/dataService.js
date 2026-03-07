@@ -233,6 +233,215 @@ export function getAccountStats(from, to) {
   });
 }
 
+// ── Orders ────────────────────────────────────────────────────────
+
+export function getOrdersByRange(from, to) {
+  const db = getDB();
+  return (db.orders || [])
+    .filter((o) => o.createdAt >= from && o.createdAt <= to)
+    .sort((a, b) => b.num - a.num);
+}
+
+/** Sum of order amounts for the given date range */
+export function getOrdersTotal(from, to) {
+  const db = getDB();
+  return round2(
+    (db.orders || [])
+      .filter((o) => o.createdAt >= from && o.createdAt <= to)
+      .reduce((s, o) => s + (Number(o.amount) || 0), 0)
+  );
+}
+
+export function getAllOrders() {
+  const db = getDB();
+  return (db.orders || []).slice().sort((a, b) => b.num - a.num);
+}
+
+export function addOrder(title, qty = 1, amount = 0, author = 'KirillLikholetov') {
+  const db = getDB();
+  if (!db.orders) db.orders = [];
+  const maxNum = db.orders.reduce((m, o) => Math.max(m, o.num || 0), 0);
+  const num    = maxNum + 1;
+  const today  = new Date().toISOString().slice(0, 10);
+  const order  = {
+    id:          `ord_${num}`,
+    num,
+    author,
+    createdAt:   today,
+    completedAt: null,
+    title,
+    executor:    '',
+    qty,
+    amount,
+    status:      'pending',
+    deadline:    null,
+  };
+  db.orders.push(order);
+  saveDB(db);
+  return order;
+}
+
+// ── Spend Model ─────────────────────────────────────────────────
+
+export function getAllSpendRecords() {
+  const db = getDB();
+  const list = (db.spendRecords || []).slice();
+  list.sort((a, b) => b.date.localeCompare(a.date));
+  return list;
+}
+
+export function addSpendRecord(data) {
+  const db = getDB();
+  if (!db.spendRecords) db.spendRecords = [];
+  const rec = { id: `spend_${Date.now()}`, ...data };
+  db.spendRecords.push(rec);
+  saveDB(db);
+  return rec;
+}
+
+export function updateSpendRecord(id, updates) {
+  const db = getDB();
+  if (!db.spendRecords) return null;
+  const i = db.spendRecords.findIndex((r) => r.id === id);
+  if (i !== -1) {
+    db.spendRecords[i] = { ...db.spendRecords[i], ...updates };
+    saveDB(db);
+    return db.spendRecords[i];
+  }
+  return null;
+}
+
+export function deleteSpendRecord(id) {
+  const db = getDB();
+  if (!db.spendRecords) return;
+  db.spendRecords = db.spendRecords.filter((r) => r.id !== id);
+  saveDB(db);
+}
+
+// ── FB Accounts ──────────────────────────────────────────────────
+
+export function getAllFbAccounts() {
+  return getDB().fbAccounts || [];
+}
+
+export function addFbAccount(data) {
+  const db = getDB();
+  if (!db.fbAccounts) db.fbAccounts = [];
+  const acc = { id: `fba_${Date.now()}`, ...data };
+  db.fbAccounts.push(acc);
+  saveDB(db);
+  return acc;
+}
+
+export function updateFbAccount(id, updates) {
+  const db = getDB();
+  if (!db.fbAccounts) return null;
+  const i = db.fbAccounts.findIndex((a) => a.id === id);
+  if (i !== -1) {
+    db.fbAccounts[i] = { ...db.fbAccounts[i], ...updates };
+    saveDB(db);
+    return db.fbAccounts[i];
+  }
+  return null;
+}
+
+export function deleteFbAccount(id) {
+  const db = getDB();
+  if (!db.fbAccounts) return;
+  db.fbAccounts = db.fbAccounts.filter((a) => a.id !== id);
+  saveDB(db);
+}
+
+// ── Expenses ─────────────────────────────────────────────────────
+
+export function getAllExpenses() {
+  const db = getDB();
+  const list = (db.expenses || []).slice();
+  list.sort((a, b) => b.date.localeCompare(a.date));
+  return list;
+}
+
+export function addExpense(data) {
+  const db = getDB();
+  if (!db.expenses) db.expenses = [];
+  const exp = { id: `exp_${Date.now()}`, ...data };
+  db.expenses.push(exp);
+  saveDB(db);
+  return exp;
+}
+
+export function updateExpense(id, updates) {
+  const db = getDB();
+  if (!db.expenses) return null;
+  const i = db.expenses.findIndex((e) => e.id === id);
+  if (i !== -1) {
+    db.expenses[i] = { ...db.expenses[i], ...updates };
+    saveDB(db);
+    return db.expenses[i];
+  }
+  return null;
+}
+
+export function deleteExpense(id) {
+  const db = getDB();
+  if (!db.expenses) return;
+  db.expenses = db.expenses.filter((e) => e.id !== id);
+  saveDB(db);
+}
+
+// ── Conversions ──────────────────────────────────────────────────
+
+/**
+ * Returns conversions filtered by date range (YYYY-MM-DD prefix match on conversionTime).
+ */
+export function getConversionsByRange(from, to) {
+  const db = getDB();
+  const convs = db.conversions || [];
+  return convs.filter((c) => {
+    const day = c.conversionTime ? c.conversionTime.slice(0, 10) : '';
+    return day >= from && day <= to;
+  });
+}
+
+/** Unique campaign names from all conversions */
+export function getConversionCampaigns() {
+  const db = getDB();
+  const convs = db.conversions || [];
+  return [...new Set(convs.map((c) => c.campaign))];
+}
+
+/**
+ * Calculates profit stats for a given date range.
+ * Revenue = sum of conversions with origStatus === 'sale'
+ * Expenses = sum of all expense records in range
+ * Profit   = Revenue − Expenses
+ * ROI      = Profit / Expenses × 100
+ */
+export function getProfitStats(from, to) {
+  const db = getDB();
+
+  const salesConvs = (db.conversions || []).filter((c) => {
+    const day = c.conversionTime ? c.conversionTime.slice(0, 10) : '';
+    return day >= from && day <= to && c.origStatus === 'sale';
+  });
+  const revenue = round2(salesConvs.reduce((s, c) => s + (Number(c.revenue) || 0), 0));
+
+  const periodExpenses = (db.expenses || []).filter((e) => e.date >= from && e.date <= to);
+  const expenses = round2(periodExpenses.reduce((s, e) => s + (Number(e.amount) || 0), 0));
+
+  const profit = round2(revenue - expenses);
+  const roi    = expenses > 0 ? round2((profit / expenses) * 100) : 0;
+
+  return {
+    revenue,
+    expenses,
+    profit,
+    roi,
+    salesCount: salesConvs.length,
+    expenseRows: periodExpenses,
+  };
+}
+
 /** Wipe localStorage and re-seed from db.json (useful for dev). */
 export function resetDB() {
   const initial = JSON.parse(JSON.stringify(seedData));

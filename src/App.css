@@ -86,8 +86,7 @@ html, body {
     margin-left: 0 !important;
   }
 
-  /* TODO: временно скрыто на мобильном — вернуть display: block когда sidebar будет готов */
   .overlay {
-    display: none;
+    display: block;
   }
 }

@@ -498,3 +498,9 @@
     text-align: center;
   }
 }
+
+.fp__total-row td {
+  background: var(--color-card-hover, rgba(255,255,255,0.04));
+  border-top: 1px solid var(--color-border);
+  font-weight: 600;
+}

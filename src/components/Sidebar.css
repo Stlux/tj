@@ -14,10 +14,9 @@
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* TODO: временно скрыто на мобильном — раскомментить когда понадобится */
 @media (max-width: 768px) {
   .sidebar {
-    display: none;
+    z-index: 200;
   }
 }
 
@@ -177,6 +176,14 @@
 
 .sidebar__submenu-item:hover {
   color: var(--text-primary);
+}
+
+.sidebar__submenu-item--active {
+  color: var(--accent-blue);
+}
+
+.sidebar__submenu-item--active .sidebar__submenu-dot {
+  background: var(--accent-blue);
 }
 
 .sidebar__submenu-dot {

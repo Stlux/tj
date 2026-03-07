@@ -3,6 +3,12 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import FinancesPage from './components/FinancesPage';
+import ConversionsPage from './components/ConversionsPage';
+import ExpensesPage from './components/ExpensesPage';
+import FbAccountsPage from './components/FbAccountsPage';
+import SpendModelPage from './components/SpendModelPage';
+import MyOrdersPage from './components/MyOrdersPage';
+import OrderSuppliesPage from './components/OrderSuppliesPage';
 import LoginPage from './components/LoginPage';
 
 const SESSION_KEY = 'tj_session';
@@ -12,8 +18,8 @@ function App() {
     try { return JSON.parse(sessionStorage.getItem(SESSION_KEY)); } catch { return null; }
   });
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activePage, setActivePage]   = useState('finances');
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 768);
+  const [activePage, setActivePage]   = useState('reports');
 
   const handleLogin = (u) => {
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(u));
@@ -50,7 +56,13 @@ function App() {
       )}
 
       <main className={`app__content ${sidebarOpen ? 'app__content--shifted' : ''}`}>
-        {activePage === 'finances' && <FinancesPage />}
+        {activePage === 'reports'      && <FinancesPage />}
+        {activePage === 'conversions'  && <ConversionsPage />}
+        {activePage === 'expenses'     && <ExpensesPage />}
+        {activePage === 'fb-accounts'  && <FbAccountsPage />}
+        {activePage === 'spend-model'  && <SpendModelPage />}
+        {activePage === 'my-orders'      && <MyOrdersPage user={user} />}
+        {activePage === 'order-supplies'  && <OrderSuppliesPage />}
       </main>
     </div>
   );

@@ -1,0 +1,507 @@
+/* ── Layout ── */
+.fba {
+  padding: 24px;
+  max-width: 1400px;
+}
+
+/* ── Title ── */
+.fba__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+/* ── Legend ── */
+.fba__legend {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.fba__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.fba__legend-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fba__legend-icon--red {
+  background: #ef4444;
+  color: #fff;
+}
+
+.fba__legend-icon--purple {
+  background: #8b5cf6;
+  color: #fff;
+}
+
+/* ── Warning banner ── */
+.fba__warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.fba__warning-icon {
+  color: #ef4444;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Action buttons bar ── */
+.fba__actions-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.fba__bar-btn {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: filter 0.18s, transform 0.1s;
+  color: #fff;
+}
+
+.fba__bar-btn:active { transform: scale(0.97); }
+.fba__bar-btn:hover  { filter: brightness(1.15); }
+
+.fba__bar-btn--blue   { background: var(--accent-blue); }
+.fba__bar-btn--purple { background: #8b5cf6; }
+.fba__bar-btn--orange { background: #f97316; }
+
+/* ── Table card ── */
+.fba__table-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.fba__table-scroll {
+  overflow-x: auto;
+}
+
+.fba__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.fba__table thead tr {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.fba__table th {
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.fba__table td {
+  padding: 14px 18px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  font-size: 13.5px;
+}
+
+.fba__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.fba__table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.fba__empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ── Status badges ── */
+.fba__badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fba__badge--green {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.fba__badge--orange {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.fba__dash {
+  color: var(--text-muted);
+}
+
+/* ── Пополнить button ── */
+.fba__topup-btn {
+  padding: 7px 16px;
+  border-radius: 7px;
+  background: var(--accent-blue);
+  border: none;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: filter 0.18s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.fba__topup-btn:hover  { filter: brightness(1.15); }
+.fba__topup-btn:active { transform: scale(0.97); }
+
+/* ── Row action buttons ── */
+.fba__row-actions {
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  padding-right: 12px !important;
+}
+
+.fba__icon-btn {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.18s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.fba__icon-btn:active { transform: scale(0.92); }
+.fba__icon-btn:hover  { filter: brightness(1.2); }
+
+.fba__icon-btn--purple { background: #8b5cf6; color: #fff; }
+.fba__icon-btn--red    { background: #ef4444; color: #fff; }
+.fba__icon-btn--blue   { background: var(--accent-blue); color: #fff; }
+
+/* ── Slide-in overlay ── */
+.fba__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 200;
+  animation: fba-fade 0.2s ease;
+}
+
+@keyframes fba-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Slide-in panel ── */
+.fba__panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  max-width: 100vw;
+  background: var(--color-sidebar);
+  border-left: 1px solid var(--color-border);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fba__panel--open { transform: translateX(0); }
+
+.fba__panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fba__panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.fba__panel-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, color 0.18s;
+}
+
+.fba__panel-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+/* ── Form ── */
+.fba__form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+}
+
+.fba__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fba__label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.fba__input {
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.18s;
+  -moz-appearance: textfield;
+}
+
+.fba__input::-webkit-outer-spin-button,
+.fba__input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.fba__input::placeholder { color: var(--text-muted); }
+.fba__input:focus { border-color: rgba(59, 130, 246, 0.55); }
+
+.fba__input option {
+  background: var(--color-sidebar);
+  color: var(--text-primary);
+}
+
+.fba__submit-btn {
+  margin-top: 4px;
+  padding: 11px 20px;
+  border-radius: 10px;
+  background: var(--accent-blue);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: filter 0.18s, transform 0.1s;
+  align-self: flex-start;
+}
+
+.fba__submit-btn:hover  { filter: brightness(1.15); }
+.fba__submit-btn:active { transform: scale(0.97); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .fba { padding: 16px; }
+  .fba__panel { width: 100vw; }
+}
+
+/* ── Row action buttons ── */
+.fba__topup-btn {
+  padding: 5px 14px;
+  border: none;
+  border-radius: 7px;
+  background: var(--accent-blue, #3b82f6);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.18s;
+}
+.fba__topup-btn:hover { filter: brightness(1.15); }
+
+.fba__icon-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.18s;
+}
+.fba__icon-btn:hover   { filter: brightness(1.2); }
+.fba__icon-btn--red    { background: #ef4444; color: #fff; }
+.fba__icon-btn--blue   { background: var(--accent-blue, #3b82f6); color: #fff; }
+
+.fba__row-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ── Transfer/Withdraw Modal ── */
+.fba__modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fba-fade 0.15s ease;
+}
+
+.fba__modal {
+  background: var(--color-card, #1e2130);
+  border: 1px solid var(--color-border, #2a2f45);
+  border-radius: 16px;
+  padding: 36px 32px 28px;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: fba-modal-up 0.2s ease;
+}
+
+@keyframes fba-modal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.fba__modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #8b92a9);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+.fba__modal-close:hover { color: var(--text-primary, #e8eaf6); }
+
+.fba__modal-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.fba__modal-icon-wrap--blue {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.fba__modal-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary, #8b92a9);
+  text-align: center;
+  margin: -6px 0 0;
+}
+
+.fba__modal-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary, #e8eaf6);
+  margin: 0;
+}
+
+.fba__modal-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fba__modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.fba__modal-actions .fba__bar-btn {
+  flex: 1;
+}
+
+.fba__bar-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--color-border, #2a2f45);
+  color: var(--text-primary, #e8eaf6);
+}
+.fba__bar-btn--ghost:hover {
+  background: var(--color-border, #2a2f45);
+}

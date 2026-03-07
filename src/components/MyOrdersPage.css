@@ -1,0 +1,238 @@
+/* ── Layout ── */
+.mo {
+  padding: 24px;
+  max-width: 1400px;
+}
+
+/* ── Header ── */
+.mo__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.mo__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mo__header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mo__export-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  background: var(--accent-blue);
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: filter 0.18s, transform 0.1s;
+}
+
+.mo__export-btn:hover  { filter: brightness(1.15); }
+.mo__export-btn:active { transform: scale(0.97); }
+
+/* ── Info cards ── */
+.mo__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.mo__card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mo__card-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.mo__card-text strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ── Table card ── */
+.mo__table-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.mo__table-scroll {
+  overflow-x: auto;
+}
+
+.mo__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.mo__table thead tr {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.mo__table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.mo__table td {
+  padding: 15px 16px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+.mo__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.mo__table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* ── Cells ── */
+.mo__num-cell strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mo__by {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.mo__title-cell {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mo__muted {
+  color: var(--text-muted) !important;
+}
+
+.mo__empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ── Status badges ── */
+.mo__badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: lowercase;
+}
+
+.mo__badge--completed {
+  background: #22c55e;
+  color: #fff;
+}
+
+.mo__badge--pending {
+  background: rgba(249, 115, 22, 0.18);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+}
+
+.mo__badge--cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ── Row actions ── */
+.mo__row-actions {
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  padding-right: 12px !important;
+}
+
+.mo__action-btn {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.18s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.mo__action-btn:active { transform: scale(0.92); }
+.mo__action-btn:hover  { filter: brightness(1.2); }
+
+.mo__action-btn--blue {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+.mo__action-btn--dots {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .mo__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mo { padding: 16px; }
+
+  .mo__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mo__header-right {
+    width: 100%;
+  }
+}
