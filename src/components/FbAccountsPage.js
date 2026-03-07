@@ -4,7 +4,6 @@ import {
   getAllFbAccounts,
   addFbAccount,
   updateFbAccount,
-  deleteFbAccount,
 } from '../data/dataService';
 
 /* ── Icons ── */
