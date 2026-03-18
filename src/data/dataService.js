@@ -216,19 +216,44 @@ export function getAccounts() {
  * Returns array of { id, name, platform, fbSpend, consumables, revenue, profit, roi }.
  */
 export function getAccountStats(from, to) {
-  const db      = getDB();
-  const records = db.records.filter(r => r.date >= from && r.date <= to);
+  const db = getDB();
 
-  return db.accounts.map((acc, idx) => {
-    const accRecords = records.filter(r => r.accountId === acc.id);
-    const stats      = calcStats(accRecords);
+  /* ── gather per-user expenses ── */
+  const periodExpenses = (db.expenses || []).filter(
+    (e) => e.date >= from && e.date <= to,
+  );
+  /* ── gather per-user revenue (sale conversions) ── */
+  const periodSales = (db.conversions || []).filter((c) => {
+    const day = c.conversionTime ? c.conversionTime.slice(0, 10) : '';
+    return day >= from && day <= to && c.origStatus === 'sale';
+  });
+
+  /* Unique user names from users / expenses */
+  const names = new Set(
+    (db.users || []).map((u) => u.name).concat(periodExpenses.map((e) => e.name)),
+  );
+  if (names.size === 0) return [];
+
+  return [...names].map((name, idx) => {
+    const fbSpend = round2(
+      periodExpenses
+        .filter((e) => e.name === name)
+        .reduce((s, e) => s + (Number(e.amount) || 0), 0),
+    );
+    const revenue = round2(
+      periodSales.reduce((s, c) => s + (Number(c.revenue) || 0), 0),
+    );
+    const profit = round2(revenue - fbSpend);
+    const roi    = fbSpend > 0 ? round2((profit / fbSpend) * 100) : 0;
+
     return {
       rowNum: idx + 1,
-      id:     acc.id,
-      name:   acc.name,
-      platform: acc.platform,
-      days:   accRecords.length,
-      ...stats,
+      id:     `user_${idx + 1}`,
+      name,
+      fbSpend,
+      revenue,
+      profit,
+      roi,
     };
   });
 }
