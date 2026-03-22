@@ -422,23 +422,10 @@ export function deleteExpense(id) {
 export function getConversionsByRange(from, to) {
   const db = getDB();
   const convs = db.conversions || [];
-  const inRange = convs.filter((c) => {
+  return convs.filter((c) => {
     const day = c.conversionTime ? c.conversionTime.slice(0, 10) : '';
     return day >= from && day <= to;
   });
-
-  // Show newest conversions first.
-  inRange.sort((a, b) => {
-    const ta = a.conversionTime || '';
-    const tb = b.conversionTime || '';
-
-    if (!ta && !tb) return 0;
-    if (!ta) return 1;
-    if (!tb) return -1;
-    return tb.localeCompare(ta);
-  });
-
-  return inRange;
 }
 
 /** Unique campaign names from all conversions */

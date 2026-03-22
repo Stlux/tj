@@ -59,7 +59,16 @@ function ConversionsPage() {
           (c.sub4 || '').toLowerCase().includes(q),
       );
     }
-    return rows;
+    // Log should show newest conversions first.
+    return [...rows].sort((a, b) => {
+      const ta = a.conversionTime || '';
+      const tb = b.conversionTime || '';
+
+      if (!ta && !tb) return 0;
+      if (!ta) return 1;
+      if (!tb) return -1;
+      return tb.localeCompare(ta);
+    });
   }, [allConversions, campaignFilter, subidSearch]);
 
   const salesTotal = useMemo(
