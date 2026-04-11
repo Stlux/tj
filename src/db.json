@@ -103,7 +103,18 @@
     { "id": "exp_078", "date": "2026-04-04", "fbAccountId": "1205368461781777",    "amount": 109.12, "name": "KirillLikholetov" },
     { "id": "exp_079", "date": "2026-04-05", "fbAccountId": "1205368461781777",    "amount": 529.12, "name": "KirillLikholetov" },
     { "id": "exp_080", "date": "2026-04-06", "fbAccountId": "1215162970497013",    "amount": 891.23, "name": "KirillLikholetov" },
-    { "id": "exp_081", "date": "2026-04-06", "fbAccountId": "667526503113950",    "amount": 926.49, "name": "KirillLikholetov" }
+    { "id": "exp_081", "date": "2026-04-06", "fbAccountId": "667526503113950",    "amount": 926.49, "name": "KirillLikholetov" },
+    { "id": "exp_082", "date": "2026-04-07", "fbAccountId": "667526503113950",    "amount": 482.01, "name": "KirillLikholetov" },
+    { "id": "exp_083", "date": "2026-04-07", "fbAccountId": "1799429150761418",    "amount": 321.15, "name": "KirillLikholetov" },
+    { "id": "exp_084", "date": "2026-04-07", "fbAccountId": "1205368461781777",    "amount": 283.48, "name": "KirillLikholetov" },
+    { "id": "exp_085", "date": "2026-04-08", "fbAccountId": "1205368461781777",    "amount": 1029.32, "name": "KirillLikholetov" },
+    { "id": "exp_086", "date": "2026-04-08", "fbAccountId": "25470030892639867",    "amount": 720.09, "name": "KirillLikholetov" },
+    { "id": "exp_087", "date": "2026-04-08", "fbAccountId": "1205368461781777",    "amount": 439.57, "name": "KirillLikholetov" },
+    { "id": "exp_088", "date": "2026-04-09", "fbAccountId": "667526503113950",    "amount": 1299.30, "name": "KirillLikholetov" },
+    { "id": "exp_089", "date": "2026-04-09", "fbAccountId": "1205368461781777",    "amount": 849.11, "name": "KirillLikholetov" },
+    { "id": "exp_090", "date": "2026-04-09", "fbAccountId": "1227744269269555",    "amount": 409.01, "name": "KirillLikholetov" },
+    { "id": "exp_091", "date": "2026-04-10", "fbAccountId": "1227744269269555",    "amount": 712.34, "name": "KirillLikholetov" },
+    { "id": "exp_092", "date": "2026-04-10", "fbAccountId": "1227744269269555",    "amount": 468.20, "name": "KirillLikholetov" }
   ],
 
   "fbAccounts": [
