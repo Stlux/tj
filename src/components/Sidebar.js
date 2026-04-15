@@ -40,6 +40,7 @@ const ChevronIcon = () => (
 const CHILD_PAGE_MAP = {
   'Профит':             'reports',
   'Конверсии':          'conversions',
+  'Выплаты':            'payouts',
   'Расходы':            'expenses',
   'ФБ Аккаунты':        'fb-accounts',
   'Спенд модель':       'spend-model',
@@ -52,7 +53,7 @@ const NAV = [
     id: 'reports',
     label: 'Отчёты',
     icon: <BarChartIcon />,
-    children: ['Профит', 'Конверсии'],
+    children: ['Профит', 'Конверсии', 'Выплаты'],
   },
   {
     id: 'finances',

@@ -1,0 +1,206 @@
+/* ── Layout ── */
+.pp {
+  padding: 24px;
+  max-width: 1100px;
+}
+
+/* ── Page header ── */
+.pp__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pp__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Summary card ── */
+.pp__summary {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.pp__card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border-2);
+  border-radius: 12px;
+  padding: 16px 22px;
+  min-width: 160px;
+}
+
+.pp__card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.pp__card-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pp__card-value--green { color: #34d399; }
+
+/* ── Table wrapper ── */
+.pp__table-wrap {
+  background: var(--color-card);
+  border: 1px solid var(--color-border-2);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.pp__table-title {
+  padding: 16px 20px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-border);
+  letter-spacing: 0.02em;
+}
+
+/* ── Table ── */
+.pp__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.pp__table th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-secondary);
+  background: var(--color-card-2);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.pp__table td {
+  padding: 13px 16px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.pp__table tr:last-child td {
+  border-bottom: none;
+}
+
+.pp__table tbody tr:hover td {
+  background: rgba(59, 130, 246, 0.04);
+}
+
+/* ── Status badge ── */
+.pp__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.pp__badge--paid {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.pp__badge--pending {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.pp__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ── Download link ── */
+.pp__doc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 10px;
+  background: rgba(59, 130, 246, 0.10);
+  border-radius: 7px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pp__doc-link:hover {
+  background: rgba(59, 130, 246, 0.22);
+  color: #93c5fd;
+}
+
+.pp__doc-link svg {
+  flex-shrink: 0;
+}
+
+.pp__no-doc {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ── Amount ── */
+.pp__amount {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: #34d399;
+}
+
+/* ── Row number ── */
+.pp__num {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ── Footer ── */
+.pp__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px 14px;
+  background: var(--color-card-2);
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+.pp__footer-total {
+  font-weight: 700;
+  color: #34d399;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .pp {
+    padding: 16px;
+  }
+
+  .pp__table th:nth-child(3),
+  .pp__table td:nth-child(3) {
+    display: none;
+  }
+}

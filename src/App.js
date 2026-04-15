@@ -10,6 +10,7 @@ import SpendModelPage from './components/SpendModelPage';
 import MyOrdersPage from './components/MyOrdersPage';
 import OrderSuppliesPage from './components/OrderSuppliesPage';
 import LoginPage from './components/LoginPage';
+import PayoutsPage from './components/PayoutsPage';
 
 const SESSION_KEY = 'tj_session';
 
@@ -63,6 +64,7 @@ function App() {
         {activePage === 'spend-model'  && <SpendModelPage />}
         {activePage === 'my-orders'      && <MyOrdersPage user={user} />}
         {activePage === 'order-supplies'  && <OrderSuppliesPage />}
+        {activePage === 'payouts'           && <PayoutsPage />}
       </main>
     </div>
   );
