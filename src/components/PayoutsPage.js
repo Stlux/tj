@@ -28,32 +28,19 @@ const PAYOUTS = [
     id: 1,
     month:    'Март 2026',
     period:   '01.03.2026 – 31.03.2026',
-    amount:   4850.00,
-    currency: 'USD',
-    status:   'paid',
+    status:   'pending',
     docName:  'Kirill Likholetov. Mar2026.xlsx',
-    docPath:  '/docs/Kirill Likholetov. Mar2026.xlsx',
-    paidAt:   '11.04.2026',
+    docPath:  '/docs/Kirill%20Likholetov.%20Mar2026.xlsx',
+    paidAt:   '15.04.2026',
   },
 ];
 
-/* ── Helpers ── */
-function fmtUsd(n) {
-  return new Intl.NumberFormat('en-US', {
-    style:    'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-  }).format(n);
-}
-
 const STATUS_LABELS = {
   paid:    'Выплачено',
-  pending: 'Ожидание',
+  pending: 'В процессе',
 };
 
 function PayoutsPage() {
-  const total = PAYOUTS.reduce((s, r) => s + r.amount, 0);
-  const paidCount = PAYOUTS.filter((r) => r.status === 'paid').length;
 
   return (
     <div className="pp">
@@ -68,14 +55,6 @@ function PayoutsPage() {
           <div className="pp__card-label">Всего документов</div>
           <div className="pp__card-value">{PAYOUTS.length}</div>
         </div>
-        <div className="pp__card">
-          <div className="pp__card-label">Выплачено периодов</div>
-          <div className="pp__card-value">{paidCount}</div>
-        </div>
-        <div className="pp__card">
-          <div className="pp__card-label">Общая сумма</div>
-          <div className="pp__card-value pp__card-value--green">{fmtUsd(total)}</div>
-        </div>
       </div>
 
       {/* ── Table ── */}
@@ -89,7 +68,6 @@ function PayoutsPage() {
               <th>Месяц</th>
               <th>Период</th>
               <th>Дата выплаты</th>
-              <th>Сумма</th>
               <th>Документ</th>
               <th>Статус</th>
             </tr>
@@ -101,9 +79,6 @@ function PayoutsPage() {
                 <td style={{ fontWeight: 600 }}>{row.month}</td>
                 <td style={{ color: 'var(--text-secondary)', fontSize: 12 }}>{row.period}</td>
                 <td style={{ color: 'var(--text-secondary)', fontSize: 12 }}>{row.paidAt || '—'}</td>
-                <td>
-                  <span className="pp__amount">{fmtUsd(row.amount)}</span>
-                </td>
                 <td>
                   {row.docPath ? (
                     <a
@@ -134,7 +109,6 @@ function PayoutsPage() {
         {/* ── Footer ── */}
         <div className="pp__footer">
           <span>{PAYOUTS.length} {PAYOUTS.length === 1 ? 'запись' : 'записей'}</span>
-          <span>Итого: <span className="pp__footer-total">{fmtUsd(total)}</span></span>
         </div>
       </div>
     </div>
