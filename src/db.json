@@ -190,7 +190,10 @@
     { "id": "exp_093", "date": "2026-05-12", "fbAccountId": "23004939439493494",    "amount": 312.01, "name": "KirillLikholetov" },
     { "id": "exp_093", "date": "2026-05-13", "fbAccountId": "25470030892639867",    "amount": 613.39, "name": "KirillLikholetov" },
     { "id": "exp_093", "date": "2026-05-13", "fbAccountId": "1205368461781777",    "amount": 713.22, "name": "KirillLikholetov" },
-    { "id": "exp_093", "date": "2026-05-13", "fbAccountId": "23004939439493494",    "amount": 389.32, "name": "KirillLikholetov" }
+    { "id": "exp_093", "date": "2026-05-13", "fbAccountId": "23004939439493494",    "amount": 389.32, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-05-14", "fbAccountId": "25470030892639867",    "amount": 1013.03, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-05-14", "fbAccountId": "1205368461781777",    "amount": 893.87, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-05-14", "fbAccountId": "23004939439493494",    "amount": 499.41, "name": "KirillLikholetov" }
   ],
 
   "fbAccounts": [
@@ -2164,7 +2167,6 @@
     { "campaign": "KirillLikholetov_[salon-gierny.com] -> insightne...", "offer": "Doitpartners.com - CZ - Casoola", "conversionTime": "2026-05-14 06:52:02", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "KLIH_CZ_UV_9867_1.11f", "sub3": "ad1", "sub4": "CZ", "deviceModel": "", "city": "Prague" },
     { "campaign": "KirillLikholetov_[cossmap.com] -> instantdeploy...", "offer": "Winleads.com - PL - LolaJack / STOP", "conversionTime": "2026-05-14 06:35:01", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "PL_3950_PEREPIS", "sub3": "ad2", "sub4": "PL", "deviceModel": "", "city": "Wroclaw" },
     { "campaign": "KirillLikholetov_[cossmap.com] -> instantdeploy...", "offer": "Winleads.com - PL - LolaJack / STOP", "conversionTime": "2026-05-14 06:30:01", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "PL_3950_UV_UNIVERSAL3", "sub3": "ad3", "sub4": "PL", "deviceModel": "", "city": "Rzeszow" },
-
     { "campaign": "KirillLikholetov_[cossmap.com] -> instantdeploy...", "offer": "Enchantaffiliates.com - PL - WINGAGA", "conversionTime": "2026-05-14 14:32:04", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "PL_3950_UV_UNIVERSAL3", "sub3": "ad3", "sub4": "PL", "deviceModel": "", "city": "Opole" },
     { "campaign": "KirillLikholetov_[solidop.com] -> indonesianfilmf...", "offer": "Unoaffiliates.com - NL - Gransino", "conversionTime": "2026-05-14 14:31:11", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "NL_ZK_3950_KLIH_US_PEREZALIV_...", "sub3": "ad3", "sub4": "NL", "deviceModel": "", "city": "Leeuwarden" },
     { "campaign": "KirillLikholetov_[salon-gierny.com] -> insightne...", "offer": "Digika.com - CZ - Tikitaka", "conversionTime": "2026-05-14 14:30:00", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "", "sub2": "", "sub3": "", "sub4": "", "deviceModel": "iPhone", "city": "Chodov" },
@@ -2212,7 +2214,6 @@
     { "campaign": "KirillLikholetov_[salon-gierny.com] -> insightne...", "offer": "Doitpartners.com - CZ - Casoola", "conversionTime": "2026-05-15 06:21:00", "period": "11м. 53с.", "status": "sale", "origStatus": "sale", "revenue": 349.89, "sub1": "klih", "sub2": "KLIH_CZ_UV_9867_2", "sub3": "ad1", "sub4": "CZ", "deviceModel": "", "city": "Prague" },
     { "campaign": "KirillLikholetov_[salon-gierny.com] -> insightne...", "offer": "Doitpartners.com - CZ - Casoola", "conversionTime": "2026-05-15 06:13:00", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "KLIH_CZ_UV_9867_2", "sub3": "ad1", "sub4": "CZ", "deviceModel": "", "city": "Prague" },
     { "campaign": "KirillLikholetov_[salon-gierny.com] -> insightne...", "offer": "Doitpartners.com - CZ - Casoola", "conversionTime": "2026-05-15 06:11:06", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "KLIH_CZ_UV_9867_1.11f", "sub3": "ad1", "sub4": "CZ", "deviceModel": "", "city": "Brno" },
-
     { "campaign": "KirillLikholetov_[salon-gierny.com] -> insightne...", "offer": "Digika.com - CZ - Tikitaka", "conversionTime": "2026-05-15 13:19:06", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "KLIH_CZ_UV_9867_2", "sub3": "ad1", "sub4": "CZ", "deviceModel": "", "city": "Vysoke Myto" },
     { "campaign": "KirillLikholetov_[naisang.com] -> instantloading...", "offer": "Digika.com - SK - Tikitaka / STOP", "conversionTime": "2026-05-15 13:14:00", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "SK_3239_KLIH_WHEE2", "sub3": "ad3", "sub4": "SK", "deviceModel": "", "city": "Aleksince" },
     { "campaign": "KirillLikholetov_[solidop.com] -> indonesianfilmf...", "offer": "Unoaffiliates.com - NL - Gransino", "conversionTime": "2026-05-15 13:03:03", "period": "", "status": "lead", "origStatus": "lead", "revenue": 0.00, "sub1": "klih", "sub2": "NL_ZK_3950_KLIH_ALL2N", "sub3": "ad1", "sub4": "NL", "deviceModel": "", "city": "Leeuwarden" },
