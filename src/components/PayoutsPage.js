@@ -37,10 +37,10 @@ const PAYOUTS = [
     id: 2,
     month:    'Апрель 2026',
     period:   '01.04.2026 – 30.04.2026',
-    status:   'pending',
+    status:   'paid',
     docName:  'Kirill-Likholetov-Apr2026.xlsx',
     docPath:  '/docs/Kirill-Likholetov-Apr2026.xlsx',
-    paidAt:   '-',
+    paidAt:   '15.05.2026',
   },
 ];
 
