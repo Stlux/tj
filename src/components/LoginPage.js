@@ -33,7 +33,7 @@ function LoginPage({ onLogin }) {
     <div className="lp">
       <div className="lp__card">
         {/* Logo */}
-        <div className="lp__logo">Traffic Jam</div>
+        <div className="lp__logo">Tj Group</div>
         <p className="lp__sub">Войдите в свой аккаунт</p>
 
         <form className="lp__form" onSubmit={handleSubmit} noValidate>
