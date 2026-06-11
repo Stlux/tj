@@ -216,7 +216,14 @@
     { "id": "exp_093", "date": "2026-05-23", "fbAccountId": "25470030892639867",    "amount": 611.05, "name": "KirillLikholetov" },
     { "id": "exp_093", "date": "2026-05-25", "fbAccountId": "1205368461781777",    "amount": 209.93, "name": "KirillLikholetov" },
     { "id": "exp_093", "date": "2026-05-29", "fbAccountId": "25470030892639867",    "amount": 416.65, "name": "KirillLikholetov" },
-    { "id": "exp_093", "date": "2026-05-29", "fbAccountId": "1205368461781777",    "amount": 702.12, "name": "KirillLikholetov" }
+    { "id": "exp_093", "date": "2026-05-29", "fbAccountId": "1205368461781777",    "amount": 702.12, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-08", "fbAccountId": "25470030892684384",    "amount": 218.94, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-08", "fbAccountId": "25470030892689012",    "amount": 302.05, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-09", "fbAccountId": "25470030892684384",    "amount": 409.03, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-09", "fbAccountId": "25470030892689012",    "amount": 94.14, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-10", "fbAccountId": "25470030892684384",    "amount": 186.28, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-10", "fbAccountId": "25470030892689012",    "amount": 592.03, "name": "KirillLikholetov" },
+    { "id": "exp_093", "date": "2026-06-10", "fbAccountId": "1205368461781777",    "amount": 478.65, "name": "KirillLikholetov" }
   ],
 
   "fbAccounts": [
@@ -244,7 +251,9 @@
     { "id": "fba_20", "name": "ID129 Jem11_tz-8 - 6",           "accountId": "82394293482384238",    "topUpStatus": null,                                          "unblockStatus": null, "transferStatus": null },
     { "id": "fba_21", "name": "ID129 Jem11_tz-8 - 8",           "accountId": "453096637779219",    "topUpStatus": null,                                          "unblockStatus": null, "transferStatus": null },
     { "id": "fba_22", "name": "ID129 Jem11_tz-8 - 7",           "accountId": "1311324003380238",   "topUpStatus": null,                                          "unblockStatus": null, "transferStatus": null },
-    { "id": "fba_23", "name": "ID129 Jem11_tz-8 - 5",           "accountId": "1022725529425316",   "topUpStatus": { "type": "waiting", "label": "В ожидании" },  "unblockStatus": null, "transferStatus": null }
+    { "id": "fba_23", "name": "ID129 Jem11_tz-8 - 5",           "accountId": "1022725529425316",   "topUpStatus": { "type": "waiting", "label": "В ожидании" },  "unblockStatus": null, "transferStatus": null },
+    { "id": "fba_22", "name": "ID130 Jem11_tz-4 - 15",           "accountId": "25470030892684384",   "topUpStatus": null,                                          "unblockStatus": null, "transferStatus": null },
+    { "id": "fba_23", "name": "ID130 Jem11_tz-4 - 16",           "accountId": "25470030892689012",   "topUpStatus": { "type": "waiting", "label": "В ожидании" },  "unblockStatus": null, "transferStatus": null }
   ],
 
   "spendRecords": [],
@@ -258,7 +267,9 @@
     { "id": "ord_3489", "num": 3489, "author": "KirillLikholetov", "createdAt": "2026-02-25", "completedAt": "2026-02-26", "title": "Покупка домена",                                 "executor": "@IgorZhelezniak",  "qty": 1, "amount": 15.00, "status": "completed", "deadline": null },
     { "id": "ord_3488", "num": 3488, "author": "KirillLikholetov", "createdAt": "2026-02-25", "completedAt": "2026-02-26", "title": "Сет аккаунтов - Le Houng",                       "executor": "@anakomissarova", "qty": 1, "amount":  0.00, "status": "completed", "deadline": null },
     { "id": "ord_3487", "num": 3487, "author": "KirillLikholetov", "createdAt": "2026-02-24", "completedAt": "2026-02-25", "title": "Сет аккаунтов - МТ",                             "executor": "@anakomissarova", "qty": 1, "amount": 32.00, "status": "completed", "deadline": null },
-    { "id": "ord_3931", "num": 3487, "author": "KirillLikholetov", "createdAt": "2026-02-24", "completedAt": "2026-04-04", "title": "Сет аккаунтов - Le Houng",                       "executor": "@anakomissarova", "qty": 1, "amount": 0.00, "status": "completed", "deadline": null }
+    { "id": "ord_3931", "num": 3487, "author": "KirillLikholetov", "createdAt": "2026-02-24", "completedAt": "2026-04-04", "title": "Сет аккаунтов - Le Houng",                       "executor": "@anakomissarova", "qty": 1, "amount": 0.00, "status": "completed", "deadline": null },
+    { "id": "ord_3487", "num": 3487, "author": "KirillLikholetov", "createdAt": "2026-06-07", "completedAt": "2026-06-07", "title": "Сет аккаунтов - Jem",                             "executor": "@anakomissarova", "qty": 1, "amount": 32.00, "status": "completed", "deadline": null },
+    { "id": "ord_3931", "num": 3487, "author": "KirillLikholetov", "createdAt": "2026-06-07", "completedAt": "2026-06-07", "title": "Пиксели - 2 шт.",                       "executor": "@anakomissarova", "qty": 1, "amount": 18.00, "status": "completed", "deadline": null }
   ],
 
   "conversions": [
