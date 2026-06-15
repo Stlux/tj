@@ -42,6 +42,15 @@ const PAYOUTS = [
     docPath:  '/docs/Kirill-Likholetov-Apr2026.xlsx',
     paidAt:   '15.05.2026',
   },
+  {
+    id: 3,
+    month:    'Май 2026',
+    period:   '01.05.2026 – 31.05.2026',
+    status:   'paid',
+    docName:  'Kirill Likholetov. May2026.xlsx',
+    docPath:  '/docs/Kirill%20Likholetov.%20May2026.xlsx',
+    paidAt:   '15.06.2026',
+  },
 ];
 
 const STATUS_LABELS = {
