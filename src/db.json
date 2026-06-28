@@ -262,7 +262,7 @@
     { "id": "exp_093", "date": "2026-06-26", "fbAccountId": "25470030892684384",    "amount": 148.55, "name": "KirillLikholetov" },
     { "id": "exp_093", "date": "2026-06-26", "fbAccountId": "78230183883588923",    "amount": 857.74, "name": "KirillLikholetov"},
     { "id": "exp_093", "date": "2026-06-27", "fbAccountId": "25470030892684384",    "amount": 1597.12, "name": "KirillLikholetov" },
-    { "id": "exp_093", "date": "2026-06-27", "fbAccountId": "78230183883588923",    "amount": 1602.88, "name": "KirillLikholetov"}
+    { "id": "exp_093", "date": "2026-06-27", "fbAccountId": "78230183883588923",    "amount": 1502.88, "name": "KirillLikholetov"}
   ],
 
   "fbAccounts": [
